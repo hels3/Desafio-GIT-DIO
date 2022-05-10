@@ -1,0 +1,110 @@
+Anotações GIT/CLI/BASH
+
+>>GIT Bash é um terminal para uso extendido do Git.
+
+>>Link para download do GIT:
+https://git-scm.com/download/win
+
+>>Principais comandos GIT-CLI-BASH:
+git --version : mostra a versão do git instalada;
+git init
+git staging
+git status
+git add <nome do arquivo> //adiciona o arquivo na staging;
+git commit
+git ignore
+git push
+git commit -m //adiciona mensagem, imagem ou novo dado";
+git difF //mostra a diferença de todos os arquivos;
+git log //mostra os commits e qual usuario e quando foi feito;
+git remote list
+git pull //puxa as alterações do servidor;
+git remote set-url
+git remote set-url origin <url do github>
+git push -u origin master
+
+>>Comandos e significados
+shift+insert //cola
+
+git --version //verifica se o git está instalado e qual a versão instalada:
+
+git config --global user.name "<USER_NAME>" //define variáveis globais; configura nome de usuário - necessárias para fazer 'commits';
+
+git config --global user.mail "<USER_EMAIL>" //define variáveis globais; configura email de usuário - necessárias para fazer 'commits'; 
+
+git config --list //verifica se as alterações feitas funcionaram;
+
+mkdir <nome_pasta/diretorio> //cria diretorio/pasta "arvore de trabalho"
+/*O Git funciona verificando a presença de alterações em arquivos de determinada pasta. Criaremos uma pasta para que ela sirva como a árvore de trabalho (diretório do projeto) e indicaremos isso ao Git, de modo que ele possa começar a controlar as alterações. Informaremos ao Git para ele começar a controlar alterações inicializando um repositório Git nessa pasta. Comece criando uma pasta vazia para seu projeto e inicialize um repositório Git dentro dela*/
+
+cd <nome_pasta/dir> //altera para o diretorio do projeto
+
+git init --initial-branch=main
+git init -b main
+//Se estiver executando o Git versão 2.28.0 ou posterior, use os seguintes comandos acima
+
+git init
+git checkout -b main //Para versões anteriores do Git, use estes comandos
+
+git status //mostra o status da arvore de trabalho;
+/*exibe o estado da árvore de trabalho (e da área de preparo. Ele permite ver quais alterações estão sendo controladas pelo Git. Portanto, você pode decidir se deseja solicitar ao Git que tire outro instantâneo.*/
+
+ls -a //mostra o conteúdo da árvore de trabalho;
+
+git --help //ajuda e mostra as ações que podem ser executadas com Git;
+/*Lembre-se de que cada comando também é fornecido com a página de ajuda própria. Encontre essas páginas de ajuda digitando git <command> --help. Por exemplo, git commit --help abre uma página que traz mais informações sobre o comando git commit e como usá-lo.*/
+
+git add //é o comando usado para instruir o Git a começar a controlar as alterações em determinados arquivos.
+/*O termo técnico é preparar essas alterações. Você usará git add para preparar as alterações para um commit. Todas as alterações de arquivos que foram adicionadas, mas que ainda não foram confirmadas, são armazenadas na área de preparo.*/
+
+git commit //salva as alterações
+/*Commit é um verbo e um substantivo. Ele tem o mesmo significado de quando você se compromete com um plano ou confirma uma alteração em um banco de dados. Como verbo, fazer commit de alterações significa que você coloca uma cópia (do arquivo, do diretório ou de outros itens) no repositório como uma nova versão. Como substantivo, um commit é a pequena parte dos dados que fornece uma identidade exclusiva às alterações confirmadas. Os dados salvos em um commit incluem o nome e o endereço de email do autor, a data, os comentários sobre o que você fez (e o motivo), uma assinatura digital opcional e o identificador exclusivo do commit anterior.*/
+
+git log //permite que você veja informações sobre commits anteriores. 
+/*Cada commit tem uma mensagem anexada (uma mensagem de commit), e o comando git log imprime informações sobre os commits mais recentes, como o carimbo de data/hora, o autor e uma mensagem de commit. Esse comando ajuda você a acompanhar o que está sendo feito e quais alterações foram salvas.*/
+
+git help tutorial * git help tutorial-2 //outras ajudas gerais;
+
+touch <index.html> //cria arquivo; touch atualiza a hr da última atualização de um arquivo caso ele exista. Se o arquivo não existir, o Git criará um arquivo vazio com esse nome de arquivo.
+
+git commit index.html -m "Create an empty index.html file" //cria um commit; o sinalizador '-m' deste comando informa o git de que vc está fornecendo uma mensagem de commit
+
+git diff //mostra o que foi alterado; 
+/*Um sinal de adição é exibido na frente das linhas que foram adicionadas e um sinal de subtração indica as linhas que foram excluídas. O padrão é que git diff compare a árvore de trabalho com o índice. Em outras palavras, ele mostra todas as alterações que ainda não foram preparadas (adicionadas ao índice do Git).*/
+
+code .gitignore  *.bak  *~ //comando para criar e abrir um arquivo chamado .gitignore no editor de codigo interno; 
+/*essa linha instrui o git a ignorar os arquivos cujos nomes terminam com .bak ou ~. - é um arquivo muito usado que impede que arquivos incorretos sejam enviados para o controle de versão.*/
+
+mkdir <nome_diretorio> //cria um diretorio;
+
+touch <nome_arquivo> //cria um arquivo;
+
+touch CSS/.git-keep //cria um arquivo vazio - espaço reservado em diretorio;
+
+rm <nome_arquivo> //remove/exclui arquivo/diretorio;
+/*Esse comando exclui o arquivo em disco e faz com que o Git registre a exclusão do arquivo no índice.*/
+
+git log //exibe todos os commits feitos; ###mostra as informações sobre o commit###
+
+git log --oneline //exibe os commits de forma mais concisa;
+
+git log --nX //em que X é um número de commit: 1 para o último commit, 2 para o anterior a esse etc.
+
+git commit --amend --no-edit //permite que você altere o histórico; 
+/*A opção --no-edit instrui o Git a fazer a alteração sem alterar a mensagem de commit. Use também --amend para editar uma mensagem de commit, adicionar arquivos acidentalmente deixados fora do commit ou remover arquivos que foram adicionados por engano.*/
+
+git checkout -- <file_name> //atualiza os arquivos na árvore de trabalho para que correspondam à versão no índice ou na árvore especificada;
+/*Se você excluiu acidentalmente um arquivo, recupere-o trazendo a versão do índice de volta à árvore de trabalho com este comando*/
+
+git reset //restaura/recupera arquivo no indice - pode ser usado para remover o preparo das alterações;
+
+git checkout --<nome_arquivo> //restaura o arquivo no disco por meio do indice; 
+
+git revert //para reverter o commit anterior. Ele funciona fazendo outro commit que cancela o primeiro.
+/*Podemos usar git revert HEAD para fazer um commit exatamente oposto ao último commit, desfazendo o commit anterior, mas deixando todo o histórico intacto. A parte HEAD do comando apenas informa o Git de que só queremos "desfazer" o último commi*/ 
+
+git reset --hard HEAD^ //pode remover o commit mais recente usando o comando git reset;
+/*O Git oferece vários tipos de redefinições. O padrão é --mixed, que redefine o índice, mas não a árvore de trabalho; também moverá HEAD se você especificar outro commit. A opção --soft só move HEAD e mantém o índice e a árvore de trabalho inalterados. Essa opção mantém todas as alterações como "alterações a serem confirmadas", como indicado em git status. Uma redefinição --hard altera o índice e a árvore de trabalho para que correspondam ao commit especificado. As alterações feitas nos arquivos com controle de alterações são descartadas*/
+
+
+fonte: Microsoft Learning

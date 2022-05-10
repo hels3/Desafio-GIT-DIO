@@ -107,4 +107,5 @@ git reset --hard HEAD^ //pode remover o commit mais recente usando o comando git
 /*O Git oferece vários tipos de redefinições. O padrão é --mixed, que redefine o índice, mas não a árvore de trabalho; também moverá HEAD se você especificar outro commit. A opção --soft só move HEAD e mantém o índice e a árvore de trabalho inalterados. Essa opção mantém todas as alterações como "alterações a serem confirmadas", como indicado em git status. Uma redefinição --hard altera o índice e a árvore de trabalho para que correspondam ao commit especificado. As alterações feitas nos arquivos com controle de alterações são descartadas*/
 
 
-fonte: Microsoft Learning
+fonte: Microsoft Learn
+       DIO
